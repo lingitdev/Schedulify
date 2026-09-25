@@ -12,6 +12,11 @@ Schedulify, okulların haftalık ders programını çakışmasız şekilde otoma
 - Dinamik Tablo Oluşturma: Sadece ders ataması yapılan aktif sınıfların programını basma, boş tabloları engelleme.
 - Kolay Başlatma Betiği: Linux ortamında otomatik sanal ortam (.venv) kurulumu ve tek tıkla çalıştırma.
 
+## Gereksinimler
+
+- **Python:** 3.10 veya üzeri (Sisteminizde Python'un kurulu ve terminalden erişilebilir olması gerekir).
+- **İşletim Sistemi:** Linux / macOS (Windows kullanıcıları WSL2 veya Git Bash üzerinden `baslat.sh` çalıştırabilir).
+
 ## Hızlı Başlangıç
 
 Projeyi yerel makinenizde çalıştırmak için terminalden aşağıdaki komutları çalıştırmanız yeterlidir:
@@ -32,3 +37,6 @@ Yol Haritası (Roadmap)
     [ ] V1.3: Oluşturulan ders programı tablolarını PDF ve Excel formatında dışa aktarma.
 
     [ ] V2.0: Öğretmenler için boş gün ve kapalı saat kısıtlamaları ekleyebilme paneli.
+
+
+
