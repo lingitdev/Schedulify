@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedulify - Akıllı Haftalık Ders Programı Oluşturucu</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .column-header-container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+    .column-bulk-select {
+      font-size: 0.75rem;
+      padding: 2px 4px;
+      border: 1px solid var(--border-color, #ccc);
+      border-radius: 4px;
+      width: 100%;
+    }
+    .level-select-container {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      background: #f1f5f9;
+      padding: 12px 16px;
+      border-radius: 8px;
+      align-items: center;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-container">
+      <h1>Schedulify</h1>
+      <p>Akıllı Haftalık Ders Programı Oluşturucu</p>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <section class="card">
+      <div class="card-header">
+        <span class="step-badge">1</span>
+        <h2>Okul ve Ders Yapısı</h2>
+      </div>
+      <div class="card-body">
+        
+        <div class="level-select-container">
+          <span style="font-weight: 600; font-size: 0.95rem;">Okul Kademesi:</span>
+          <label class="radio-label">
+            <input type="radio" name="school-level" value="ilkokul"> İlkokul
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="school-level" value="ortaokul" checked> Ortaokul
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="school-level" value="lise"> Lise
+          </label>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="day-count">Haftalık Gün Sayısı</label>
+            <input type="number" id="day-count" min="1" max="7" value="5">
+          </div>
+          <div class="form-group">
+            <label for="hour-count">Günlük Saat Sayısı</label>
+            <input type="number" id="hour-count" min="1" max="12" value="8">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="group-label">Sınıf Seviyeleri</label>
+          <div class="checkbox-group" id="grades-container"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="group-label">Şubeler</label>
+          <div class="checkbox-group" id="sections-container">
+            <label class="checkbox-control"><input type="checkbox" value="A" checked> A Şubesi</label>
+            <label class="checkbox-control"><input type="checkbox" value="B" checked> B Şubesi</label>
+            <label class="checkbox-control"><input type="checkbox" value="C" checked> C Şubesi</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="group-label">Okutulan Dersler</label>
+          <div class="checkbox-grid" id="subjects-container"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <span class="step-badge">2</span>
+        <h2>Öğretmen Havuzu ve Branş Atama</h2>
+      </div>
+      <div class="card-body">
+
+        <div class="teacher-form">
+          <div class="form-group flex-2">
+            <label for="teacher-name">Öğretmen Adı Soyadı</label>
+            <input type="text" id="teacher-name" placeholder="Örn. Ahmet Yılmaz">
+          </div>
+          <div class="form-group flex-2">
+            <label for="teacher-subject">Branş / Ders Seçimi</label>
+            <select id="teacher-subject">
+              <option value="" disabled selected>Ders seçiniz...</option>
+            </select>
+          </div>
+          <div class="form-group flex-1 action-group">
+            <button type="button" class="btn btn-primary">Öğretmen Ekle</button>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 70px;">ID</th>
+                <th>Öğretmen Adı</th>
+                <th>Branş</th>
+                <th style="width: 90px; text-align: center;">İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="teacher-table-body">
+              <tr>
+                <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 16px;">
+                  Henüz öğretmen eklenmedi.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <span class="step-badge">3</span>
+        <h2>Sınıf Müfredat Yapılandırması</h2>
+      </div>
+      <div class="card-body">
+        <p class="section-desc">Her sınıf şubesi için derslerin haftalık ders saatini belirleyin ve ilgili ders öğretmenini atayın.</p>
+        
+        <div class="batch-assign-bar">
+          <div class="batch-title">Toplu Ders Saati Atama</div>
+          <div class="batch-inputs">
+            <select id="batch-grade-select">
+              <option value="ALL">Tüm Sınıf Seviyeleri</option>
+            </select>
+
+            <select id="batch-subject-select"></select>
+
+            <input type="number" id="batch-hours-input" min="0" max="20" placeholder="Saat">
+
+            <button type="button" id="btn-batch-apply" class="btn btn-secondary">Uygula</button>
+          </div>
+        </div>
+
+        <div id="curriculum-container" class="table-wrapper"></div>
+
+        <div style="margin-top: 24px; text-align: right;">
+          <button type="button" id="btn-generate-schedule" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem;">
+            Ders Programını Oluştur
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="result-card" style="display: none;">
+      <div class="card-header">
+        <span class="step-badge">4</span>
+        <h2>Haftalık Ders Programı Sonuçları</h2>
+      </div>
+      <div class="card-body">
+        <div id="schedule-results-container"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
