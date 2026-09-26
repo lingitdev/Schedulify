@@ -22,7 +22,7 @@ Schedulify, okulların haftalık ders programını çakışmasız şekilde otoma
 Projeyi yerel makinenizde çalıştırmak için terminalden aşağıdaki komutları çalıştırmanız yeterlidir:
 
 ```bash
-git clone https://github.com/lingitdev/schedulify.git
+git clone https://github.com/lingitdev/Schedulify.git
 cd Schedulify
 chmod +x baslat.sh
 ./baslat.sh
