@@ -12,5 +12,4 @@ fi
 
 (sleep 1.5 && (xdg-open http://127.0.0.1:5000 2>/dev/null || open http://127.0.0.1:5000)) &
 
-# Doğrudan venv içindeki python3 çalıştırıcısını kullan
 "$DIR/.venv/bin/python3" "$DIR/backend/server.py"
