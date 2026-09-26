@@ -3,7 +3,6 @@ echo "Schedulify Sunucusu Başlatılıyor..."
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# Sanal ortam kontrolü ve otomatik oluşturma
 if [ ! -d "$DIR/.venv" ]; then
     echo "Sanal ortam bulunamadı, oluşturuluyor..."
     python3 -m venv "$DIR/.venv"
