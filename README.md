@@ -29,9 +29,6 @@ chmod +x baslat.sh
 ```
 
 baslat.sh betiği gerekli sanal ortamı kuracak, bağımlılıkları yükleyecek, Flask sunucusunu başlatacak ve tarayıcınızı otomatik olarak açacaktır.
-Yol Haritası 
-
-    [ ] V2.0: Öğretmenler için boş gün ve kapalı saat kısıtlamaları ekleyebilme paneli.
 
 
 
