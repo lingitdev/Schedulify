@@ -26,15 +26,10 @@ git clone https://github.com/lingitdev/Schedulify.git
 cd Schedulify
 chmod +x baslat.sh
 ./baslat.sh
+```
 
 baslat.sh betiği gerekli sanal ortamı kuracak, bağımlılıkları yükleyecek, Flask sunucusunu başlatacak ve tarayıcınızı otomatik olarak açacaktır.
-Yol Haritası (Roadmap)
-
-    [ ] V1.1: Statik gün sayısı (5 gün) yerine doğrudan gün seçimi yapabilme (Pazartesi, Salı vb.).
-
-    [ ] V1.2: Doğal dil tabanlı esnek kural motoru ("Türkçe Cuma gününe denk gelmesin" vb. kurallar yazabilme).
-
-    [ ] V1.3: Oluşturulan ders programı tablolarını PDF ve Excel formatında dışa aktarma.
+Yol Haritası 
 
     [ ] V2.0: Öğretmenler için boş gün ve kapalı saat kısıtlamaları ekleyebilme paneli.
 
